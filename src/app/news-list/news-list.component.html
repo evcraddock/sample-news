@@ -1,5 +1,8 @@
-<p>
-  news-list works! <br/>
-  <a [routerLink] = "['/news', '1']">news id 1</a> <br/>
-  <a [routerLink] = "['/news', '2']">news id 2</a>
-</p>
+<div class="container">
+  <h1>News Articles</h1>
+  <div class="row">
+    <div *ngFor="let article of articles">
+      <news-listitem [article]="article"></news-listitem>
+    </div>
+  </div>
+</div>
