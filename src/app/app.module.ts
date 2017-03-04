@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { MarkdownToHtmlPipe } from './shared/markdown-to-html.pipe';
 import { NewsListComponent } from './news-list/news-list.component';
 import { NewsListItemComponent } from './news-list/news-listitem.component';
 import { NavComponent } from './nav/nav.component';
@@ -21,13 +22,17 @@ import { ArticleService } from './service/article-service';
     NewsListComponent,
     NewsListItemComponent,
     NavComponent,
-    NewsDetailComponent
+    NewsDetailComponent,
+    MarkdownToHtmlPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes)
+  ],
+  exports: [
+    MarkdownToHtmlPipe
   ],
   providers: [
     ArticleService

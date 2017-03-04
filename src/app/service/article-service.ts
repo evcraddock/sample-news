@@ -17,7 +17,7 @@ export class ArticleService {
         }).catch(this.handleError);
     }
 
-    getArticle(id: number): Observable<IArticle> {
+    getArticle(id: string): Observable<IArticle> {
         return this.http.get(this.serverUrl + '/articles/' + id).map((response: Response) => {
             return <IArticle>response.json();
         }).catch(this.handleError);
