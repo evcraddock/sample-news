@@ -1,26 +1,22 @@
-<div class="row">
-
-      <!-- Blog Entries Column -->
-      <div class="col-md-8">
-          <!--<div style="width:690px;">-->
-          <div>
-            <h2>
-                {{article.title}}
-            </h2>             
-            <span>
-              <img class="img-responsive center-block" style="width:690px; height:389px;" [src]="article.banner" alt="">
-            </span>
-              <span class="pull-right"><span class="glyphicon glyphicon-time"></span> Posted on {{article.publishDate | date: 'shortDate'}}</span>
-            <span>
-                by {{article.author}}
-            </span> 
-            <br/><br/>
-            <span *ngFor="let cat of article.categories">
-              <a href="/"><i class="label label-default">{{ cat }}</i></a>
-            </span>
-            <hr>
-            <p [innerHtml]="article.content | MarkdownToHtml"></p>   
-            <br/><br/>
-          </div>
-      </div>  
-</div>
+  <div>
+      <div>
+        <h2>
+            {{article.title}}
+        </h2>             
+        <span>
+          <img *ngIf="article.banner" class="img-responsive" [src]="article?.banner" alt="">
+        </span>
+        <span class="pull-left">
+              by {{article.author}} 
+            <span class="glyphicon glyphicon-time"></span> 
+            Posted on {{article.publishDate | date: 'shortDate'}}
+        </span>
+        <br/><br/>
+        <span *ngFor="let cat of article.categories">
+          <a [routerLink]="['/', cat]"><i class="label label-default">{{ cat }}</i></a>
+        </span>
+        <hr>
+        <p [innerHtml]="article.content | MarkdownToHtml"></p>   
+        <br/><br/>
+      </div>
+  </div>  

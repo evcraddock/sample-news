@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { IArticle } from '../models/index';
@@ -20,6 +20,12 @@ export class ArticleService {
     getArticle(id: string): Observable<IArticle> {
         return this.http.get(this.serverUrl + '/articles/' + id).map((response: Response) => {
             return <IArticle>response.json();
+        }).catch(this.handleError);
+    }
+
+    searchArticles(params?: URLSearchParams): Observable<IArticle[]> {
+        return this.http.get(this.serverUrl + '/articles', { search: params }).map((response: Response) => {
+            return <IArticle[]>response.json();
         }).catch(this.handleError);
     }
 

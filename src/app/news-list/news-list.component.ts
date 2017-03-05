@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { IArticle } from '../models/index';
-import { ArticleService } from '../service/article-service';
 
 @Component({
   templateUrl: './news-list.component.html',
@@ -9,17 +10,11 @@ import { ArticleService } from '../service/article-service';
 export class NewsListComponent implements OnInit {
   articles: IArticle[];
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.loadArticles();
-  }
-
-  loadArticles() {
-    this.articleService.getArticles().subscribe(articles => {
-      if (articles) {
-        this.articles = articles;
-      }
+    this.route.data.forEach((data) => {
+      this.articles = data['articles'];
     });
   }
 }

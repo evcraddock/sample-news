@@ -15,6 +15,7 @@ import { appRoutes } from '../routes';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
 
 import { ArticleService } from './service/article-service';
+import { NewsListResolver } from './news-list/news-list-resolver.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ArticleService } from './service/article-service';
     MarkdownToHtmlPipe
   ],
   providers: [
-    ArticleService
+    ArticleService,
+    NewsListResolver
   ],
   bootstrap: [AppComponent]
 })

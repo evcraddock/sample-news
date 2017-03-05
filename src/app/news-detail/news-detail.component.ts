@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { URLSearchParams } from '@angular/http';
 
 import { IArticle } from '../models/index';
 import { ArticleService } from '../service/article-service';
@@ -11,19 +12,23 @@ import { ArticleService } from '../service/article-service';
 })
 export class NewsDetailComponent implements OnInit {
   article: IArticle = <IArticle>{};
-  newsId: string;
+  permUrl: string;
   
   constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
 
   ngOnInit() {
-    this.newsId = this.route.snapshot.params['id'];  
+    //this.newsId = this.route.snapshot.params['id']; 
+    this.permUrl = this.route.snapshot.params['permalink']; 
     this.loadArticle();
   }
 
   loadArticle() {
-    this.articleService.getArticle(this.newsId).subscribe(news_article => {
-      if (news_article) {
-        this.article = news_article;
+    let params = new URLSearchParams();
+    params.set('url', this.permUrl);
+
+    this.articleService.searchArticles(params).subscribe(articles => {
+      if (articles) {
+        this.article = articles[0];
       }
     });
   }
