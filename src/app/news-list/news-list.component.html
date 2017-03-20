@@ -2,9 +2,15 @@
   <h1>News Articles</h1>
   <hr/>
   <div class="row">
-    <div *ngFor="let article of articles">
-      <news-listitem [article]="article"></news-listitem>
-      <hr/>
+    <div *ngIf="hasMessage()" class="alert alert-info">
+      {{ message }}
+    </div>
+
+    <div *ngIf="hasArticles()"> 
+      <span *ngFor="let article of articles">
+        <news-listitem [article]="article"></news-listitem>
+        <hr/>
+      </span>
     </div>
   </div>
 

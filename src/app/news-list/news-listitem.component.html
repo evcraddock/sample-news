@@ -1,4 +1,4 @@
-<div class="media">  
+<div *ngIf="article" class="media">  
     <div class="media-left">
         <a *ngIf="article.banner" [routerLink]= "['/articles', article.url]">
             <img class="media-object" style="width:150px;" alt="" [src]="article.banner">

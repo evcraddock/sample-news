@@ -12,12 +12,11 @@ import { ArticleService } from '../service/article-service';
 })
 export class NewsDetailComponent implements OnInit {
   article: IArticle = <IArticle>{};
-  permUrl: string;
+  permUrl: string = '';
   
   constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
 
   ngOnInit() {
-    //this.newsId = this.route.snapshot.params['id']; 
     this.permUrl = this.route.snapshot.params['permalink']; 
     this.loadArticle();
   }
@@ -26,7 +25,7 @@ export class NewsDetailComponent implements OnInit {
     let params = new URLSearchParams();
     params.set('url', this.permUrl);
 
-    this.articleService.searchArticles(params).subscribe(articles => {
+    this.articleService.getArticles(params).subscribe(articles => {
       if (articles) {
         this.article = articles[0];
       }
