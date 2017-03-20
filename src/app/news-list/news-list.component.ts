@@ -35,11 +35,6 @@ export class NewsListComponent implements OnInit {
         if (data['articles']) {
 
           const articleData = data['articles'];
-          // if (typeof(articleData) === 'string') {
-          //   msg = articleData;
-          //   // this.router.navigate(['/errors/']);
-          // }
-
           if (articleData instanceof Array && articleData.length > 0) {
             this.articles = articleData;
             msg = '';

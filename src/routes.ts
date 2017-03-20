@@ -6,9 +6,8 @@ import { NewsListResolver} from './app/news-list/news-list-resolver.service';
 
 export const appRoutes: Routes = [
     { path: 'news', component: NewsListComponent, resolve: { articles: NewsListResolver } },
-    { path: 'errors', component: ErrorsComponent },
     { path: ':category', component: NewsListComponent, resolve: { articles: NewsListResolver } },
     { path: ':category/tags/:tag', component: NewsListComponent, resolve: { articles: NewsListResolver } },
     { path: 'articles/:permalink', component: NewsDetailComponent },
-    { path: '', redirectTo: 'errors', pathMatch: 'full' }
+    { path: '', redirectTo: 'news', pathMatch: 'full' }
 ];
