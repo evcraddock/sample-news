@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IArticle } from '../../models/index';
+import { IArticle } from '../../shared/models/index';
 
 @Component({
     selector: 'news-listitem',

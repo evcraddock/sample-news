@@ -1,12 +1,12 @@
 import { Component , OnInit} from '@angular/core';
 
-import { ErrorService } from '../service/';
+import { ErrorService } from '../../service/';
 
 @Component({
     selector: 'error-banner',
-    template: `<div *ngIf="hasErrorMessage()" class="alert alert-danger">{{ errorMessage }}</div>`
+    templateUrl: 'errors-banner.component.html'
 })
-export class ErrorsComponent implements OnInit {
+export class ErrorsBannerComponent implements OnInit {
 
     public errorMessage = '';
     public hasErrorMessage() {

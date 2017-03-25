@@ -3,8 +3,8 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { URLSearchParams, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { IArticle } from '../../models/index';
-import { ArticleService } from '../../service/';
+import { IArticle } from '../models/index';
+import { ArticleService } from '../service/';
 
 @Injectable()
 export class ArticleResolver implements Resolve<any> {

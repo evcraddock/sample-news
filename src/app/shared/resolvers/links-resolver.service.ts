@@ -3,8 +3,8 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { URLSearchParams, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { ILink } from '../../models/index';
-import { LinksService } from '../../service';
+import { ILink } from '../models/index';
+import { LinksService } from '../service';
 
 @Injectable()
 export class LinksResolver implements Resolve<any> {

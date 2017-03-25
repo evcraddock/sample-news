@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ILink } from '../../../models/index';
+import { ILink } from '../../models/index';
 
 @Component({
   selector: 'app-side-menu',

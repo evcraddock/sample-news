@@ -14,6 +14,6 @@ export class MarkdownToHtmlPipe implements PipeTransform {
         if (markdown == null) {
             return '';
         };
-        return marked(markdown, options);
+        return marked(markdown, options).trim();
     }
 }

@@ -12,28 +12,28 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { MarkdownToHtmlPipe } from './shared/markdown-to-html.pipe';
+import { MarkdownToHtmlPipe } from './shared/pipes/markdown-to-html/markdown-to-html.pipe';
 import { NewsListComponent } from './news-list/news-list.component';
 import { NewsListItemComponent } from './news-list/news-list-item/news-listitem.component';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './shared/components/nav/nav.component';
 import { appRoutes } from '../routes';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
-import { ErrorsComponent } from './shared/errors.component';
 
-import { ArticleService, ErrorService, LinksService } from './service/index';
+import { ArticleService, ErrorService, LinksService } from './shared/service/index';
 import { ArticleResolver, ArticlesResolver, LinksResolver } from './shared/resolvers';
 import { SideMenuComponent } from './shared/components/side-menu/side-menu.component';
+import { ErrorsBannerComponent } from './shared/components/errors-banner/errors-banner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorsComponent,
     NewsListComponent,
     NewsListItemComponent,
     NavComponent,
     NewsDetailComponent,
     MarkdownToHtmlPipe,
-    SideMenuComponent
+    SideMenuComponent,
+    ErrorsBannerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { ErrorsComponent } from './app/shared/errors.component';
 import { NewsListComponent } from './app/news-list/news-list.component';
 import { NewsDetailComponent } from './app/news-detail/news-detail.component';
 import { ArticleResolver, ArticlesResolver, LinksResolver } from './app/shared/resolvers';

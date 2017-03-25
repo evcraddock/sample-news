@@ -1,9 +1,7 @@
 import { Component, OnInit} from '@angular/core';
-import { Response } from '@angular/http';
-import { ActivatedRoute, Router} from '@angular/router';
-// import { Response } from '@angular/http';
+import { ActivatedRoute } from '@angular/router';
 
-import { IArticle, ILink } from '../models/index';
+import { IArticle, ILink } from '../shared/models/index';
 
 @Component({
   templateUrl: './news-list.component.html',
@@ -14,7 +12,7 @@ export class NewsListComponent implements OnInit {
   public links: ILink[] = [];
   public messages: string[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.loadData();

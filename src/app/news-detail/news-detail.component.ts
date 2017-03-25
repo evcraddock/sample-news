@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { IArticle, ILink } from '../models/index';
+import { IArticle, ILink } from '../shared/models/index';
 
 @Component({
   selector: 'app-news-detail',
