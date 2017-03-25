@@ -2,15 +2,20 @@
   <h1>News Articles</h1>
   <hr/>
   <div class="row">
-    <div *ngIf="hasMessage()" class="alert alert-info">
-      {{ message }}
-    </div>
+    <div class="col-md-8">
+      <div *ngIf="hasMessages()" class="alert alert-info">
+        <span *ngFor="let message of messages">{{message}} <br/></span>
+      </div>
 
-    <div *ngIf="hasArticles()"> 
-      <span *ngFor="let article of articles">
-        <news-listitem [article]="article"></news-listitem>
-        <hr/>
-      </span>
+      <div *ngIf="hasArticles()"> 
+        <span *ngFor="let article of articles">
+          <news-listitem [article]="article"></news-listitem>
+          <hr/>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-4">
+        <app-side-menu [links]="links"></app-side-menu>
     </div>
   </div>
 

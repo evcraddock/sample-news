@@ -14,15 +14,15 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MarkdownToHtmlPipe } from './shared/markdown-to-html.pipe';
 import { NewsListComponent } from './news-list/news-list.component';
-import { NewsListItemComponent } from './news-list/news-listitem.component';
+import { NewsListItemComponent } from './news-list/news-list-item/news-listitem.component';
 import { NavComponent } from './nav/nav.component';
 import { appRoutes } from '../routes';
 import { NewsDetailComponent } from './news-detail/news-detail.component';
 import { ErrorsComponent } from './shared/errors.component';
 
-import { ArticleService } from './service/article-service';
-import { NewsListResolver } from './news-list/news-list-resolver.service';
-import { ErrorService } from './service/error-service';
+import { ArticleService, ErrorService, LinksService } from './service/index';
+import { ArticleResolver, ArticlesResolver, LinksResolver } from './shared/resolvers';
+import { SideMenuComponent } from './shared/components/side-menu/side-menu.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { ErrorService } from './service/error-service';
     NewsListItemComponent,
     NavComponent,
     NewsDetailComponent,
-    MarkdownToHtmlPipe
+    MarkdownToHtmlPipe,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +47,10 @@ import { ErrorService } from './service/error-service';
   providers: [
     ArticleService,
     ErrorService,
-    NewsListResolver
+    LinksService,
+    ArticlesResolver,
+    LinksResolver,
+    ArticleResolver
   ],
   bootstrap: [AppComponent]
 })

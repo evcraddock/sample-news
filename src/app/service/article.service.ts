@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { IArticle } from '../models/index';
-import { ErrorService } from '../service/error-service';
+import { ErrorService } from './error.service';
 
 @Injectable()
 export class ArticleService {
@@ -14,6 +14,7 @@ export class ArticleService {
     constructor(private http: Http, private router: Router, private errorService: ErrorService) {}
 
     getArticle(id: string): Observable<IArticle> {
+        
         return this.http.get(this.serverUrl + '/articles/' + id).map((response: Response) => {
 
             return this.convertToArticle(response.json());
@@ -22,7 +23,8 @@ export class ArticleService {
     }
 
     getArticles(params?: URLSearchParams): Observable<IArticle[]> {
-        const request = this.http.get(this.serverUrl + '/articles', { search: params });
+        let url = this.serverUrl + '/articles';
+        const request = this.http.get(url, { search: params });
 
         return request.map((response: Response) => {
             const articles: IArticle[] = [];

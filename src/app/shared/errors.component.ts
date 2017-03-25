@@ -1,6 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 
-import { ErrorService } from '../service/error-service';
+import { ErrorService } from '../service/';
 
 @Component({
     selector: 'error-banner',

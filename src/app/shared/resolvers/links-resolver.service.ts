@@ -3,14 +3,15 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { URLSearchParams, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
-import { IArticle } from '../models/index';
-import { ArticleService } from '../service/article-service';
+import { ILink } from '../../models/index';
+import { LinksService } from '../../service';
 
 @Injectable()
-export class NewsListResolver implements Resolve<any> {
-    constructor(private articleService: ArticleService) {}
+export class LinksResolver implements Resolve<any> {
+    constructor(private linkService: LinksService) {}
 
     resolve(route: ActivatedRouteSnapshot) {
+
         const params = new URLSearchParams();
         if (route.params['category']) {
             params.set('categories', route.params['category']);
@@ -20,7 +21,7 @@ export class NewsListResolver implements Resolve<any> {
             params.set('tags', route.params['tag']);
         }
 
-        return this.articleService.getArticles(params)
+        return this.linkService.getLinks(params)
         .catch(error => {
             // Could handle the error here?
             return Observable.of(error);

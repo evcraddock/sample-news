@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { URLSearchParams } from '@angular/http';
 
-import { IArticle } from '../models/index';
-import { ArticleService } from '../service/article-service';
+import { IArticle, ILink } from '../models/index';
 
 @Component({
   selector: 'app-news-detail',
@@ -12,24 +10,25 @@ import { ArticleService } from '../service/article-service';
 })
 export class NewsDetailComponent implements OnInit {
   article: IArticle = <IArticle>{};
-  permUrl: string = '';
+  links: ILink[] = [];
   
-  constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.permUrl = this.route.snapshot.params['permalink']; 
-    this.loadArticle();
+    this.loadData();
   }
 
-  loadArticle() {
-    let params = new URLSearchParams();
-    params.set('url', this.permUrl);
+  loadData() {
+    if (this.route.data) {
+      this.route.data.forEach(data => {
+        if (data['article'] instanceof Array && data['article'].length > 0) {
+          this.article = data['article'][0];
+        }
 
-    this.articleService.getArticles(params).subscribe(articles => {
-      if (articles) {
-        this.article = articles[0];
-      }
-    });
+        if (data['links'] instanceof Array && data['links'].length > 0) {
+          this.links = data['links'];
+        }
+      })
+    }
   }
-
 }

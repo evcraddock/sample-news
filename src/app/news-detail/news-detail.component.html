@@ -1,5 +1,5 @@
   <div>
-      <div>
+      <div class="col-md-8">
         <h2>
             {{article.title}}
         </h2>             
@@ -19,4 +19,7 @@
         <p [innerHtml]="article.content | MarkdownToHtml"></p>   
         <br/><br/>
       </div>
+      <div class="col-md-4">
+        <app-side-menu [links]="links"></app-side-menu>
+    </div>
   </div>  
