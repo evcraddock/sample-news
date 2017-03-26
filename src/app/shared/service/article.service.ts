@@ -14,16 +14,15 @@ export class ArticleService {
     constructor(private http: Http, private router: Router, private errorService: ErrorService) {}
 
     getArticle(id: string): Observable<IArticle> {
-        
-        return this.http.get(this.serverUrl + '/articles/' + id).map((response: Response) => {
 
+        return this.http.get(this.serverUrl + '/articles/' + id).map((response: Response) => {
             return this.convertToArticle(response.json());
         })
         .catch(this.handleArticleError);
     }
 
     getArticles(params?: URLSearchParams): Observable<IArticle[]> {
-        let url = this.serverUrl + '/articles';
+        const url = this.serverUrl + '/articles';
         const request = this.http.get(url, { search: params });
 
         return request.map((response: Response) => {

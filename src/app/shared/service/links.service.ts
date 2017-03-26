@@ -12,7 +12,7 @@ export class LinksService {
   private serverUrl = 'http://localhost:9000';
     constructor(private http: Http, private router: Router, private errorService: ErrorService) {}
 
-    getLinks(params?: URLSearchParams): Observable<ILink> {
+    getLinks(params?: URLSearchParams): Observable<ILink[]> {
         const request = this.http.get(this.serverUrl + '/links', { search: params });
 
         return request.map((response: Response) => {

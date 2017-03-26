@@ -32,10 +32,14 @@ export class NewsListComponent implements OnInit {
 
   loadData() {
     if (this.route.data) {
-      this.route.data.forEach(data => {
+      this.route.data.subscribe(data => {
         this.loadArticles(data['articles']);
         this.loadLinks(data['links']);
       });
+      // this.route.data.forEach(data => {
+      //   this.loadArticles(data['articles']);
+      //   this.loadLinks(data['links']);
+      // });
     }
   }
 
