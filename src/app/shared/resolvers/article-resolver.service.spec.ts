@@ -7,17 +7,11 @@ import {ArticleResolver } from './article-resolver.service';
 import { ArticleService, ErrorService } from '../service/index';
 
 describe('ArticleResolver', () => {
-    let mockHttp;
-    let mockRouter;
     let service: ArticleResolver;
     let mockArticleService: ArticleService;
-    let mockErrorService: ErrorService;
 
     beforeEach(() => {
-        mockHttp = jasmine.createSpyObj('mockHttp', ['get']);
-        mockRouter = jasmine.createSpyObj('route', ['stuff']);
-        mockErrorService = new ErrorService();
-        mockArticleService = new ArticleService(mockHttp, mockRouter, mockErrorService);
+        mockArticleService = jasmine.createSpyObj('mockHttp', ['getArticles']);
         service = new ArticleResolver(mockArticleService);
     });
 
