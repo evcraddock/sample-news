@@ -6,13 +6,9 @@ import { ILink } from '../../models/index';
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.less']
 })
-export class SideMenuComponent implements OnInit {
+export class SideMenuComponent {
   @Input() links: ILink[] = [];
-  constructor() { }
 
-  ngOnInit() {
-  }
-  
   public hasLinks() {
     return this.links.length > 0;
   }

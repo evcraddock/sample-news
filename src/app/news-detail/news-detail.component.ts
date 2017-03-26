@@ -11,7 +11,7 @@ import { IArticle, ILink } from '../shared/models/index';
 export class NewsDetailComponent implements OnInit {
   article: IArticle = <IArticle>{};
   links: ILink[] = [];
-  
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class NewsDetailComponent implements OnInit {
         if (data['links'] instanceof Array && data['links'].length > 0) {
           this.links = data['links'];
         }
-      })
+      });
     }
   }
 }
