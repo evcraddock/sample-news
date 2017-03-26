@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Http, Response, URLSearchParams, ResponseOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
+import { environment } from '../../../environments/environment';
 import { ArticleService, ErrorService } from './index';
 import { IArticle } from '../models/index';
 
@@ -56,7 +57,7 @@ describe('ArticleService', () => {
             mockHttp.get.and.returnValue(Observable.of(false));
             service.getArticles();
 
-            const expectedendpoint = 'http://localhost:9000/articles';
+            const expectedendpoint = environment.apiEndpoint + '/articles';
             const expectedParams = Object({ search: undefined });
 
             expect(mockHttp.get).toHaveBeenCalledWith(expectedendpoint, expectedParams);

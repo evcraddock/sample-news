@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Http, Response, URLSearchParams, ResponseOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
+import { environment } from '../../../environments/environment';
 import { LinksService, ErrorService } from './index';
 import { ILink } from '../models/index';
 
@@ -48,7 +49,7 @@ describe('LinksService', () => {
             mockHttp.get.and.returnValue(Observable.of(false));
             service.getLinks();
 
-            const expectedendpoint = 'http://localhost:9000/links';
+            const expectedendpoint = environment.apiEndpoint + '/links';
             const expectedParams = Object({ search: undefined });
 
             expect(mockHttp.get).toHaveBeenCalledWith(expectedendpoint, expectedParams);

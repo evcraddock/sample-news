@@ -3,6 +3,7 @@ import { Http, Response, URLSearchParams } from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
+import { environment } from '../../../environments/environment';
 import { IArticle } from '../models/index';
 import { ErrorService } from './error.service';
 
@@ -10,7 +11,7 @@ import { ErrorService } from './error.service';
 export class ArticleService {
 
     // TODO: Move to configuration file
-    private serverUrl = 'http://localhost:9000';
+    private serverUrl = environment.apiEndpoint;
     constructor(private http: Http, private router: Router, private errorService: ErrorService) {}
 
     getArticle(id: string): Observable<IArticle> {

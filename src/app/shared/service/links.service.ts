@@ -3,13 +3,14 @@ import { Http, Response, URLSearchParams } from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
+import { environment } from '../../../environments/environment';
 import { ILink } from '../models/index';
 import { ErrorService } from './error.service';
 
 @Injectable()
 export class LinksService {
 
-  private serverUrl = 'http://localhost:9000';
+    private serverUrl = environment.apiEndpoint;
     constructor(private http: Http, private router: Router, private errorService: ErrorService) {}
 
     getLinks(params?: URLSearchParams): Observable<ILink[]> {
