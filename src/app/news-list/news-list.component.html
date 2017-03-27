@@ -7,8 +7,10 @@
         <span *ngFor="let message of messages">{{message}} <br/></span>
       </div>
 
-      <div *ngIf="hasArticles()"> 
-        <span *ngFor="let article of articles">
+      <div *ngIf="hasArticles()">
+        <ngb-pagination [collectionSize]="articles.length" [(page)]="page" 
+          [(pageSize)]="pagesize" (pageChange)="changePage()"></ngb-pagination>
+        <span *ngFor="let article of pagedArticles">
           <news-listitem [article]="article"></news-listitem>
           <hr/>
         </span>

@@ -9,13 +9,18 @@ import { IArticle, ILink } from '../shared/models/index';
 })
 export class NewsListComponent implements OnInit {
   public articles: IArticle[] = [];
+  public pagedArticles: IArticle[];
   public links: ILink[] = [];
   public messages: string[] = [];
+  public pagesize = 5;
+  public page = 1;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.loadData();
+    // this.totalpages = this.articles.length / 5;
+    this.changePage();
   }
 
   hasMessages() {
@@ -36,10 +41,6 @@ export class NewsListComponent implements OnInit {
         this.loadArticles(data['articles']);
         this.loadLinks(data['links']);
       });
-      // this.route.data.forEach(data => {
-      //   this.loadArticles(data['articles']);
-      //   this.loadLinks(data['links']);
-      // });
     }
   }
 
@@ -60,4 +61,18 @@ export class NewsListComponent implements OnInit {
       this.messages.push(msg);
     }
   }
+
+  changePage() {
+    const startIndex = this.page === 1 ? 0 : (this.page - 1) * this.pagesize;
+    const endIndex = startIndex + this.pagesize;
+
+    this.pagedArticles = this.articles.slice(startIndex, endIndex);
+  }
+
+  // setPage(page: number) {
+  //   if (page < 1 || page > this.totalpages) {
+  //       return;
+  //   }
+  //   this.pagedArticles = this.articles.slice((page - 1) * 5, page * 5);
+  // }
 }
